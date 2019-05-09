@@ -1,34 +1,63 @@
 <template>
   <section class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxt-tategaki-website2
-      </h1>
-      <h2 class="subtitle">
-        My super-excellent Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green"
-          >Documentation</a
-        >
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-          >GitHub</a
-        >
-      </div>
+    <h1 class="title title-rt">
+      <transition name="fade" mode="out-in">
+        <span :key="lang_reading">{{ lang_reading }}</span>
+      </transition>
+    </h1>
+    <h1 class="title">
+      紀葉清
+    </h1>
+    <img class="title--image" src="@/static/img/sakura.png" />
+    <h2 class="subtitle">
+      Front-End Engineer, Linguaphile, Pilgrim
+    </h2>
+    <div class="links">
+      <nuxt-link to="/" class="button--pink"
+        >Awesome Pages Coming Soon</nuxt-link
+      >
     </div>
   </section>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+// import Logo from '~/components/Logo.vue'
 
+const RT_LANGUAGES = [
+  'Kino Hasumi',
+  'き の は す み',
+  'Kỷ Diệp Thanh',
+  'Jì Yè Qīng',
+  '기　　잎　　청'
+]
 export default {
-  components: {
-    Logo
+  // components: {
+  //   Logo
+  // }
+  head() {
+    return {
+      title: 'Kino Hasumi - Website',
+      meta: [
+        {
+          hid: 'Kino Hasumi - Personal Website',
+          name: 'Kino Hasumi - Personal Website',
+          content: 'Kino Hasumi - Personal Website Project'
+        }
+      ]
+    }
+  },
+  data: () => {
+    return {
+      lang_reading: RT_LANGUAGES[0],
+      time_interval_ref: null
+    }
+  },
+  created() {
+    let currentRtIndex = 0
+    this.time_interval_ref = setInterval(() => {
+      this.lang_reading = RT_LANGUAGES[currentRtIndex]
+      currentRtIndex = (currentRtIndex + 1) % RT_LANGUAGES.length
+    }, 5000)
   }
 }
 </script>
@@ -36,26 +65,48 @@ export default {
 <style>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 
 .title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
-  font-weight: 300;
-  font-size: 100px;
+  font-weight: 100;
+  font-size: 7rem;
   color: #35495e;
-  letter-spacing: 1px;
+  letter-spacing: 1rem;
+}
+
+.title-rt {
+  position: relative;
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s ease-out;
+}
+
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0.1;
+}
+
+.title--image {
+  display: inline-block;
+  width: 50vw;
+  max-width: 480px;
+  height: auto;
+  margin: 32px 0;
 }
 
 .subtitle {
-  font-weight: 300;
-  font-size: 42px;
+  font-weight: 100;
+  font-size: 2rem;
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
@@ -63,5 +114,26 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+
+@media (max-width: 767px) {
+  .title {
+    display: block;
+    font-weight: 100;
+    font-size: 5rem;
+    color: #35495e;
+    letter-spacing: 0.5rem;
+  }
+  .title-rt {
+    font-size: 1.7rem;
+    letter-spacing: 0.1rem;
+    transition: 0.3s;
+  }
+  .subtitle {
+    font-weight: 100;
+    font-size: 1.8rem;
+    color: #526488;
+    padding-bottom: 25px;
+  }
 }
 </style>
