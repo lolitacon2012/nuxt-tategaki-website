@@ -69,6 +69,6 @@ html {
   background: #b7e9f7;
 }
 ::-moz-selection {
-  background: #b7e9f7;
+  background: #b7e9f6;
 }
 </style>
