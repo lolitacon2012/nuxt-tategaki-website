@@ -1,21 +1,23 @@
 <template>
   <section class="container">
-    <h1 class="title title-rt">
-      <transition name="fade" mode="out-in">
-        <span :key="lang_reading">{{ lang_reading }}</span>
-      </transition>
-    </h1>
-    <h1 class="title">
-      紀葉清
-    </h1>
-    <img class="title--image" src="@/static/img/sakura.png" />
-    <h2 class="subtitle">
-      Front-End Engineer, Linguaphile, Pilgrim
-    </h2>
-    <div class="links">
-      <nuxt-link to="/" class="button--pink"
-        >Awesome Pages Coming Soon</nuxt-link
-      >
+    <div>
+      <h1 class="title title-rt">
+        <transition name="fade" mode="out-in">
+          <span :key="lang_reading">{{ lang_reading }}</span>
+        </transition>
+      </h1>
+      <h1 class="title">
+        紀葉清
+      </h1>
+      <img class="title--image" src="@/static/img/sakura.png" />
+      <h2 class="subtitle">
+        Front-End Engineer, Linguaphile, Pilgrim
+      </h2>
+      <div class="links">
+        <nuxt-link to="/" class="button--pink"
+          >Awesome Pages Coming Soon</nuxt-link
+        >
+      </div>
     </div>
   </section>
 </template>
@@ -71,12 +73,52 @@ export default {
 <style>
 .container {
   margin: 0 auto;
-  height: 100vh;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: auto;
+  background: rgba(255, 255, 255, 1);
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 46%,
+    rgba(252, 233, 241, 1) 100%
+  );
+  background: -webkit-gradient(
+    left top,
+    right bottom,
+    color-stop(0%, rgba(255, 255, 255, 1)),
+    color-stop(46%, rgba(255, 255, 255, 1)),
+    color-stop(100%, rgba(252, 233, 241, 1))
+  );
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 46%,
+    rgba(252, 233, 241, 1) 100%
+  );
+  background: -o-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 46%,
+    rgba(252, 233, 241, 1) 100%
+  );
+  background: -ms-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 46%,
+    rgba(252, 233, 241, 1) 100%
+  );
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 46%,
+    rgba(252, 233, 241, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fce9f1', GradientType=1 );
 }
 
 .title {
@@ -124,6 +166,9 @@ export default {
 }
 
 @media (max-width: 767px) {
+  .container {
+    min-height: 100vmax;
+  }
   .title {
     display: block;
     font-weight: 100;
@@ -142,6 +187,7 @@ export default {
     font-size: 1.8rem;
     color: #526488;
     padding-bottom: 25px;
+    max-width: 16rem;
   }
 }
 </style>

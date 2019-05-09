@@ -64,4 +64,11 @@ html {
   -ms-writing-mode: vertical-rl;
   -writing-mode: vertical-rl;
 }
+
+::selection {
+  background: #b7e9f7;
+}
+::-moz-selection {
+  background: #b7e9f7;
+}
 </style>
