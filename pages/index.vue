@@ -1,23 +1,21 @@
 <template>
   <section class="container">
-    <div>
-      <h1 class="title title-rt">
-        <transition name="fade" mode="out-in">
-          <span :key="lang_reading">{{ lang_reading }}</span>
-        </transition>
-      </h1>
-      <h1 class="title">
-        紀葉清
-      </h1>
-      <img class="title--image" src="@/static/img/sakura.png" />
-      <h2 class="subtitle">
-        Front-End Engineer, Linguaphile, Pilgrim
-      </h2>
-      <div class="links">
-        <nuxt-link to="/" class="button--pink"
-          >Awesome Pages Coming Soon</nuxt-link
-        >
-      </div>
+    <h1 class="title title-rt">
+      <transition name="fade" mode="out-in">
+        <span :key="lang_reading">{{ lang_reading }}</span>
+      </transition>
+    </h1>
+    <h1 class="title">
+      紀葉清
+    </h1>
+    <img class="title--image" src="@/static/img/sakura.png" />
+    <h2 class="subtitle">
+      Front-End Engineer, Linguaphile, Pilgrim
+    </h2>
+    <div class="links">
+      <nuxt-link to="/" class="button--pink"
+        >Awesome Pages Coming Soon</nuxt-link
+      >
     </div>
   </section>
 </template>
@@ -159,6 +157,7 @@ export default {
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .links {
