@@ -7,7 +7,11 @@
 <style>
 html {
   font-family: Source Sans Pro, -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Helvetica Neue, Arial, sans-serif;
+    Roboto, Helvetica Neue, Microsoft YaHei, Source Han Sans SC,
+    Noto Sans CJK SC, Arial, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC,
+    Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei,
+    sans-serif; */
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;

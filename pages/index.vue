@@ -25,10 +25,10 @@
 
 const RT_LANGUAGES = [
   'Kino Hasumi',
-  'き の は す み',
+  'きのはすみ',
   'Kỷ Diệp Thanh',
-  'Jì Yè Qīng',
-  '기　　잎　　청'
+  '기　잎　청',
+  'Jì Yè Qīng'
 ]
 export default {
   // components: {
@@ -48,7 +48,7 @@ export default {
   },
   data: () => {
     return {
-      lang_reading: RT_LANGUAGES[0],
+      lang_reading: RT_LANGUAGES[RT_LANGUAGES.length - 1],
       time_interval_ref: null
     }
   },
@@ -58,6 +58,12 @@ export default {
       this.lang_reading = RT_LANGUAGES[currentRtIndex]
       currentRtIndex = (currentRtIndex + 1) % RT_LANGUAGES.length
     }, 5000)
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
   }
 }
 </script>
@@ -85,6 +91,7 @@ export default {
   position: relative;
   font-size: 2.5rem;
   letter-spacing: 0.5rem;
+  line-height: 2.5rem;
 }
 
 .fade-enter-active,
@@ -128,6 +135,7 @@ export default {
     font-size: 1.7rem;
     letter-spacing: 0.1rem;
     transition: 0.3s;
+    line-height: 1.7rem;
   }
   .subtitle {
     font-weight: 100;
