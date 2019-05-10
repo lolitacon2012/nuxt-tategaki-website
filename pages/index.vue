@@ -17,62 +17,74 @@
         >
       </div>
     </section>
-    <!-- <section class="container container-full-height">
+    <section class="container container-full-height">
       <div class="content-foreground">
-        <div class="section-title-container">
+        <div class="section-title-container flex-start ">
           <h1 class="section-title">
-            I am a Software Engineer.
+            I'm a Software Engineer.
           </h1>
           <h1 class="section-title-footnote">
-            RN Developer @ <span class="highlight">Shopee</span> Pte. Ltd.
+            RN Developer @Shopee Pte. Ltd.
           </h1>
         </div>
         <div class="tool-box-container">
           <div class="tool-box-container-row">
             <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-              <h2>JavaScript</h2>
+              <h1><font-awesome-icon :icon="['fab', 'react']" /></h1>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'vuejs']" /></h1>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'html5']" /></h1>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'css3-alt']" /></h1>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'js-square']" /></h1>
             </div>
             <div class="tool-box-item">
               <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-              <h2>React.js</h2>
             </div>
             <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-              <h2>Vue.js</h2>
+              <h1><font-awesome-icon :icon="['fab', 'python']" /></h1>
             </div>
             <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-              <h2>CSS</h2>
+              <h1><font-awesome-icon :icon="['fab', 'github']" /></h1>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'node-js']" /></h1>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'ubuntu']" /></h1>
             </div>
           </div>
-          <div class="tool-box-container-row">
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-              <h2>Java</h2>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-              <h2>Java</h2>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-              <h2>Java</h2>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-              <h2>Java</h2>
-            </div>
-          </div>
-          <h1 class="section-title-footnote">
+          <!-- <h1 class="section-title-footnote">
             Tools & Skills
+          </h1> -->
+        </div>
+        <div class="section-title-container flex-end ">
+          <h1 class="section-title">
+            And here are some tools I'd love to use.
+          </h1>
+          <h1 class="section-title-footnote">
+            With Coursera Deep Learning Specialization Certificate
+            <span
+              ><a
+                target="_blank"
+                class="highlight"
+                href="https://www.coursera.org/account/accomplishments/specialization/certificate/QQEHCXPXJKUJ"
+                >here</a
+              ></span
+            >.
           </h1>
         </div>
       </div>
       <div class="canvas-background">
         <canvas id="canvas"></canvas>
       </div>
-    </section> -->
+    </section>
   </div>
 </template>
 
@@ -280,16 +292,23 @@ export default {
 }
 
 .section-title-container {
-  text-align: left;
+  padding: 0 10rem;
+}
+
+.section-title-container.flex-start {
   align-self: flex-start;
-  padding: 0 5rem;
+  text-align: left;
+}
+
+.section-title-container.flex-end {
+  align-self: flex-end;
+  text-align: right;
 }
 
 .section-title {
   display: block;
   font-weight: 100;
   font-size: 4rem;
-  letter-spacing: 0.4rem;
 }
 
 .section-title-footnote {
@@ -330,27 +349,30 @@ export default {
   align-items: center;
   text-align: center;
   width: 100%;
-  background-color: rgb(255, 238, 245);
-  padding: 2rem 0;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background: linear-gradient(to right, #ddbbff, #ffeeaa);
+  padding: 10rem 0;
 }
 
 .tool-box-container-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
 }
 
 .tool-box-item {
   padding: 0.5rem 4rem;
-  width: 12rem;
+  width: 9rem;
+  text-align: center;
 }
 
 .tool-box-item > h1 {
-  font-size: 6rem;
+  font-size: 5rem;
 }
 
 .tool-box-item > h2 {

@@ -67,23 +67,25 @@ html {
 }
 .highlight {
   display: inline-block;
-  padding: 0 8px;
+  padding: 0 6px;
   border-radius: 6px;
+  text-decoration: none;
+  color: #35495e;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   background: -webkit-gradient(
     linear,
     left top,
     right top,
-    from(#ddbbff),
-    to(#ffeeaa)
+    from(#e0bbe4),
+    to(#ffdfd3)
   );
-  background: linear-gradient(to right, #ddbbff, #ffeeaa);
+  background: linear-gradient(to right, #e0bbe4, #ffdfd3);
 }
 ::selection {
-  background: #b7e9f7;
+  background: #e0bbe4;
 }
 ::-moz-selection {
-  background: #b7e9f6;
+  background: #e0bbe4;
 }
 </style>
