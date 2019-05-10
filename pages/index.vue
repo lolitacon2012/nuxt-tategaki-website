@@ -1,23 +1,79 @@
 <template>
-  <section class="container">
-    <h1 class="title title-rt">
-      <transition name="fade" mode="out-in">
-        <span :key="lang_reading">{{ lang_reading }}</span>
-      </transition>
-    </h1>
-    <h1 class="title">
-      紀葉清
-    </h1>
-    <img class="title--image" src="@/static/img/sakura.png" />
-    <h2 class="subtitle">
-      Front-End Engineer, Linguaphile, Pilgrim
-    </h2>
-    <div class="links">
-      <nuxt-link to="/" class="button--pink"
-        >Awesome Pages Coming Soon</nuxt-link
-      >
-    </div>
-  </section>
+  <div>
+    <section class="container container-pink-gradient container-full-height">
+      <h1 class="title title-rt">
+        <transition name="fade" mode="out-in">
+          <span :key="lang_reading">{{ lang_reading }}</span>
+        </transition>
+      </h1>
+      <h1 class="title">紀葉清</h1>
+      <img class="title--image" src="@/static/img/sakura.png" />
+      <h2 class="subtitle">
+        Front-End Engineer, Linguaphile, Pilgrim
+      </h2>
+      <div class="links">
+        <nuxt-link to="/" class="button--pink"
+          >Awesome Pages Coming Soon</nuxt-link
+        >
+      </div>
+    </section>
+    <!-- <section class="container container-full-height">
+      <div class="content-foreground">
+        <div class="section-title-container">
+          <h1 class="section-title">
+            I am a Software Engineer.
+          </h1>
+          <h1 class="section-title-footnote">
+            RN Developer @ <span class="highlight">Shopee</span> Pte. Ltd.
+          </h1>
+        </div>
+        <div class="tool-box-container">
+          <div class="tool-box-container-row">
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
+              <h2>JavaScript</h2>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
+              <h2>React.js</h2>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
+              <h2>Vue.js</h2>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
+              <h2>CSS</h2>
+            </div>
+          </div>
+          <div class="tool-box-container-row">
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
+              <h2>Java</h2>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
+              <h2>Java</h2>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
+              <h2>Java</h2>
+            </div>
+            <div class="tool-box-item">
+              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
+              <h2>Java</h2>
+            </div>
+          </div>
+          <h1 class="section-title-footnote">
+            Tools & Skills
+          </h1>
+        </div>
+      </div>
+      <div class="canvas-background">
+        <canvas id="canvas"></canvas>
+      </div>
+    </section> -->
+  </div>
 </template>
 
 <script>
@@ -30,6 +86,9 @@ const RT_LANGUAGES = [
   '기　잎　청',
   'Jì Yè Qīng'
 ]
+const rnd = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
 export default {
   // components: {
   //   Logo
@@ -64,6 +123,60 @@ export default {
       this.$nuxt.$loading.start()
       setTimeout(() => this.$nuxt.$loading.finish(), 500)
     })
+    this.renderTriangle()
+  },
+  methods: {
+    renderTriangle: (canvas = document.getElementById('canvas')) => {
+      if (!canvas) {
+        return
+      }
+      const max = Math.max(window.innerWidth, window.innerHeight)
+      const canvasWidth = (canvas.width = max)
+      const canvasHeight = (canvas.height = max)
+      const ctx = canvas.getContext('2d')
+      const heightScale = 0.866
+      ctx.fillStyle = 'rgb(0,0,0)'
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight)
+      ctx.lineWidth = 1
+      const hueStart = 335
+      const triSide = 187
+      const halfSide = triSide / 2
+      const rowHeight = Math.floor(triSide * heightScale)
+      const columns = Math.ceil(canvasWidth / triSide) + 1
+      const rows = Math.ceil(canvasHeight / rowHeight)
+      let col, row
+      for (row = 0; row < rows; row++) {
+        const hue = hueStart + row * 3
+        for (col = 0; col < columns; col++) {
+          let x = col * triSide
+          const y = row * rowHeight
+          let clr
+          if (row % 2 !== 0) {
+            x -= halfSide
+          }
+          clr = 'hsl(' + hue + ', 70%, ' + rnd(94, 100) + '%)'
+          ctx.fillStyle = clr
+          ctx.strokeStyle = clr
+          ctx.beginPath()
+          ctx.moveTo(x, y)
+          ctx.lineTo(x + halfSide, y + rowHeight)
+          ctx.lineTo(x - halfSide, y + rowHeight)
+          ctx.closePath()
+          ctx.fill()
+          ctx.stroke()
+          clr = 'hsl(' + hue + ', 70%, ' + rnd(94, 100) + '%)'
+          ctx.fillStyle = clr
+          ctx.strokeStyle = clr
+          ctx.beginPath()
+          ctx.moveTo(x, y)
+          ctx.lineTo(x + triSide, y)
+          ctx.lineTo(x + halfSide, y + rowHeight)
+          ctx.closePath()
+          ctx.fill()
+          ctx.stroke()
+        }
+      }
+    }
   }
 }
 </script>
@@ -72,12 +185,19 @@ export default {
 .container {
   margin: 0 auto;
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   overflow: auto;
+  position: relative;
+}
+
+.container-full-height {
+  min-height: 100vh;
+}
+
+.container-pink-gradient {
   background: rgba(255, 255, 255, 1);
   background: -moz-linear-gradient(
     -45deg,
@@ -123,7 +243,6 @@ export default {
   display: block;
   font-weight: 100;
   font-size: 7rem;
-  color: #35495e;
   letter-spacing: 1rem;
 }
 
@@ -160,19 +279,102 @@ export default {
   text-align: center;
 }
 
+.section-title-container {
+  text-align: left;
+  align-self: flex-start;
+  padding: 0 5rem;
+}
+
+.section-title {
+  display: block;
+  font-weight: 100;
+  font-size: 4rem;
+  letter-spacing: 0.4rem;
+}
+
+.section-title-footnote {
+  display: block;
+  font-weight: 100;
+  font-size: 1.2rem;
+}
+
 .links {
   padding-top: 15px;
 }
 
+.canvas-background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.content-foreground {
+  z-index: 1000;
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.tool-box-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  background-color: rgb(255, 238, 245);
+  padding: 2rem 0;
+}
+
+.tool-box-container-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 900px;
+}
+
+.tool-box-item {
+  padding: 0.5rem 4rem;
+  width: 12rem;
+}
+
+.tool-box-item > h1 {
+  font-size: 6rem;
+}
+
+.tool-box-item > h2 {
+  font-size: 1.2rem;
+  font-weight: 100;
+}
+
+.tool-box-item > h3 {
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
 @media (max-width: 767px) {
-  .container {
+  .container-full-height {
     min-height: 100vmax;
   }
   .title {
     display: block;
     font-weight: 100;
     font-size: 5rem;
-    color: #35495e;
     letter-spacing: 0.5rem;
   }
   .title-rt {

@@ -19,6 +19,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  color: #35495e;
 }
 
 *,
@@ -64,7 +65,21 @@ html {
   -ms-writing-mode: vertical-rl;
   -writing-mode: vertical-rl;
 }
-
+.highlight {
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 6px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    from(#ddbbff),
+    to(#ffeeaa)
+  );
+  background: linear-gradient(to right, #ddbbff, #ffeeaa);
+}
 ::selection {
   background: #b7e9f7;
 }
