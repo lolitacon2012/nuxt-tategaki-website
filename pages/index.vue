@@ -9,7 +9,7 @@
       <h1 class="title">紀葉清</h1>
       <img class="title--image" src="@/static/img/sakura.png" />
       <h2 class="subtitle">
-        Front-End Engineer, Linguaphile, Pilgrim
+        <span class="avoidwrap">Front-End Engineer, </span>Linguaphile, Pilgrim
       </h2>
       <div class="links">
         <nuxt-link to="/" class="button--pink"
@@ -56,7 +56,7 @@
             <div class="tool-box-item">
               <h1><font-awesome-icon :icon="['fab', 'node-js']" /></h1>
             </div>
-            <div class="tool-box-item">
+            <div class="tool-box-item hide-on-mobile">
               <h1><font-awesome-icon :icon="['fab', 'ubuntu']" /></h1>
             </div>
           </div>
@@ -66,18 +66,24 @@
         </div>
         <div class="section-title-container flex-end ">
           <h1 class="section-title">
-            And here are some tools I'd love to use.
+            <span class="avoidwrap">And here are some tools</span
+            ><span class="avoidwrap">I'd love to use.</span>
           </h1>
           <h1 class="section-title-footnote">
-            With Coursera Deep Learning Specialization Certificate
-            <span
-              ><a
-                target="_blank"
-                class="highlight"
-                href="https://www.coursera.org/account/accomplishments/specialization/certificate/QQEHCXPXJKUJ"
-                >here</a
-              ></span
-            >.
+            <span class="avoidwrap"
+              >With Coursera Deep Learning Specialization</span
+            >
+            <span class="avoidwrap"
+              >Certificate
+              <span
+                ><a
+                  target="_blank"
+                  class="highlight"
+                  href="https://www.coursera.org/account/accomplishments/specialization/certificate/QQEHCXPXJKUJ"
+                  >here</a
+                ></span
+              >.</span
+            >
           </h1>
         </div>
       </div>
@@ -136,6 +142,9 @@ export default {
       setTimeout(() => this.$nuxt.$loading.finish(), 500)
     })
     this.renderTriangle()
+    window.onresize = () => {
+      this.renderTriangle()
+    }
   },
   methods: {
     renderTriangle: (canvas = document.getElementById('canvas')) => {
@@ -146,12 +155,13 @@ export default {
       const canvasWidth = (canvas.width = max)
       const canvasHeight = (canvas.height = max)
       const ctx = canvas.getContext('2d')
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
       const heightScale = 0.866
       ctx.fillStyle = 'rgb(0,0,0)'
       ctx.fillRect(0, 0, canvasWidth, canvasHeight)
       ctx.lineWidth = 1
       const hueStart = 335
-      const triSide = 187
+      const triSide = 120
       const halfSide = triSide / 2
       const rowHeight = Math.floor(triSide * heightScale)
       const columns = Math.ceil(canvasWidth / triSide) + 1
@@ -411,6 +421,79 @@ export default {
     color: #526488;
     padding-bottom: 25px;
     max-width: 16rem;
+  }
+
+  .section-title-container {
+    padding: 0;
+  }
+
+  .section-title-container.flex-start {
+    align-self: center;
+    text-align: center;
+  }
+
+  .section-title-container.flex-end {
+    align-self: center;
+    text-align: center;
+  }
+
+  .section-title {
+    display: block;
+    font-weight: 100;
+    font-size: 1.8rem;
+  }
+
+  .section-title-footnote {
+    display: block;
+    font-weight: 100;
+    font-size: 1rem;
+  }
+
+  .tool-box-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background: linear-gradient(to right, #ddbbff, #ffeeaa);
+    padding: 0;
+  }
+
+  .tool-box-container-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .tool-box-item {
+    padding: 1rem 0;
+    text-align: center;
+    width: 33.333333333333333333333%;
+  }
+
+  .tool-box-item > h1 {
+    font-size: 4rem;
+  }
+
+  .tool-box-item > h2 {
+    font-size: 1rem;
+    font-weight: 100;
+  }
+
+  .tool-box-item > h3 {
+    font-size: 0.8rem;
+    font-weight: 100;
+  }
+
+  .hide-on-mobile {
+    display: none;
   }
 }
 </style>

@@ -88,4 +88,13 @@ html {
 ::-moz-selection {
   background: #e0bbe4;
 }
+span.avoidwrap {
+  display: inline-block;
+}
+@media (max-width: 767px) {
+  .highlight {
+    padding: 0 3px;
+    border-radius: 5px;
+  }
+}
 </style>
