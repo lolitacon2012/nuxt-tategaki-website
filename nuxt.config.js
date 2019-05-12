@@ -29,9 +29,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    { src :'~/plugins/vue-parallax-js', ssr: false },
-  ],
+  plugins: [],
 
   /*
    ** Nuxt.js modules

@@ -1,31 +1,22 @@
 <template>
   <div>
-    <parallax-container class="">
-      <section class="container container-pink-gradient container-full-height">
-        <parallax-element :parallax-strength="-5" :type="'depth'">
-          <h1 class="title title-rt">
-            <transition name="fade" mode="out-in">
-              <span :key="lang_reading">{{ lang_reading }}</span>
-            </transition>
-          </h1>
-          <h1 class="title">紀葉清</h1>
-        </parallax-element>
-        <parallax-element :parallax-strength="10" :type="'depth'">
-          <img class="title--image" src="@/static/img/sakura.png" />
-        </parallax-element>
-        <parallax-element :parallax-strength="-5" :type="'depth'">
-          <h2 class="subtitle">
-            <span class="avoidwrap">Front-End Engineer, </span>Linguaphile,
-            Pilgrim
-          </h2>
-          <div class="links">
-            <nuxt-link to="/" class="button--pink"
-              >Awesome Pages Coming Soon</nuxt-link
-            >
-          </div>
-        </parallax-element>
-      </section>
-    </parallax-container>
+    <section class="container container-pink-gradient container-full-height">
+      <h1 class="title title-rt">
+        <transition name="fade" mode="out-in">
+          <span :key="lang_reading">{{ lang_reading }}</span>
+        </transition>
+      </h1>
+      <h1 class="title">紀葉清</h1>
+      <img class="title--image" src="@/static/img/sakura.png" />
+      <h2 class="subtitle">
+        <span class="avoidwrap">Front-End Engineer, </span>Linguaphile, Pilgrim
+      </h2>
+      <div class="links">
+        <nuxt-link to="/" class="button--pink"
+          >Awesome Pages Coming Soon</nuxt-link
+        >
+      </div>
+    </section>
     <section class="container container-full-height">
       <div class="content-foreground">
         <div class="section-title-container flex-start ">
