@@ -1,6 +1,7 @@
 <template>
   <div>
     <section class="container container-pink-gradient container-full-height">
+      <Triangle />
       <h1 class="title title-rt">
         <transition name="fade" mode="out-in">
           <span :key="lang_reading">{{ lang_reading }}</span>
@@ -29,65 +30,35 @@
         </div>
         <div class="tool-box-container">
           <div class="tool-box-container-row">
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'react']" /></h1>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'vuejs']" /></h1>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'html5']" /></h1>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'css3-alt']" /></h1>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'js-square']" /></h1>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'java']" /></h1>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'python']" /></h1>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'github']" /></h1>
-            </div>
-            <div class="tool-box-item">
-              <h1><font-awesome-icon :icon="['fab', 'node-js']" /></h1>
-            </div>
-            <div class="tool-box-item hide-on-mobile">
-              <h1><font-awesome-icon :icon="['fab', 'ubuntu']" /></h1>
-            </div>
+            <HomepageSkill
+              v-for="skill in skills"
+              :key="skill.context"
+              :context="skill.context"
+              :hide-on-mobile="skill.hideOnMobile"
+            />
           </div>
-          <!-- <h1 class="section-title-footnote">
-            Tools & Skills
-          </h1> -->
         </div>
         <div class="section-title-container flex-end ">
           <h1 class="section-title">
-            <span class="avoidwrap">And here are some tools</span
-            ><span class="avoidwrap">I'd love to use.</span>
+            <span class="avoidwrap">Here are some</span>
+            <span class="avoidwrap">awesome tools</span>
+            <span class="avoidwrap">I'd love to use.</span>
           </h1>
           <h1 class="section-title-footnote">
-            <span class="avoidwrap"
-              >With Coursera Deep Learning Specialization</span
-            >
-            <span class="avoidwrap"
-              >Certificate
+            <span class="avoidwrap">Play with </span>
+            <span class="avoidwrap">
               <span
                 ><a
                   target="_blank"
                   class="highlight"
                   href="https://www.coursera.org/account/accomplishments/specialization/certificate/QQEHCXPXJKUJ"
-                  >here</a
+                  >Deep Learning</a
                 ></span
-              >.</span
+              >also.</span
             >
           </h1>
         </div>
       </div>
-
       <div class="canvas-background">
         <canvas id="canvas"></canvas>
       </div>
@@ -98,6 +69,8 @@
 <script>
 // import Logo from '~/components/Logo.vue'
 
+import HomepageSkill from '~/components/HomepageSkill'
+import Triangle from '~/components/Triangle'
 const RT_LANGUAGES = [
   'Kino Hasumi',
   'きのはすみ',
@@ -109,9 +82,10 @@ const rnd = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 export default {
-  // components: {
-  //   Logo
-  // }
+  components: {
+    HomepageSkill,
+    Triangle
+  },
   head() {
     return {
       title: 'Kino Hasumi - Website',
@@ -127,7 +101,19 @@ export default {
   data: () => {
     return {
       lang_reading: RT_LANGUAGES[RT_LANGUAGES.length - 1],
-      time_interval_ref: null
+      time_interval_ref: null,
+      skills: [
+        { context: 'react', hideOnMobile: false },
+        { context: 'vuejs', hideOnMobile: false },
+        { context: 'js-square', hideOnMobile: false },
+        { context: 'html5', hideOnMobile: false },
+        { context: 'css3-alt', hideOnMobile: false },
+        { context: 'java', hideOnMobile: false },
+        { context: 'python', hideOnMobile: false },
+        { context: 'ubuntu', hideOnMobile: false },
+        { context: 'node-js', hideOnMobile: false },
+        { context: 'github', hideOnMobile: true }
+      ]
     }
   },
   created() {
@@ -217,7 +203,8 @@ export default {
 }
 
 .container-full-height {
-  min-height: 100vh;
+  height: 100vh;
+  min-height: 768px;
 }
 
 .container-pink-gradient {
@@ -357,55 +344,42 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   width: 100%;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   background: linear-gradient(to right, #ddbbff, #ffeeaa);
-  padding: 10rem 0;
+  padding: 6rem 0;
 }
 
 .tool-box-container-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;
-  max-width: 1200px;
-}
-
-.tool-box-item {
-  padding: 0.5rem 4rem;
-  width: 9rem;
-  text-align: center;
-}
-
-.tool-box-item > h1 {
-  font-size: 5rem;
-}
-
-.tool-box-item > h2 {
-  font-size: 1.2rem;
-  font-weight: 100;
-}
-
-.tool-box-item > h3 {
-  font-size: 0.8rem;
-  font-weight: 100;
+  flex-wrap: wrap;
 }
 
 .overflow-hidden {
   overflow: hidden;
 }
-
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 3rem;
+  }
+  .section-title-container {
+    padding: 0 6rem;
+  }
+  .section-title-footnote {
+    font-size: 1.1rem;
+  }
+}
+@media (max-width: 768px) {
   .container-full-height {
     min-height: 100vmax;
   }
   .title {
-    display: block;
-    font-weight: 100;
     font-size: 5rem;
     letter-spacing: 0.5rem;
   }
@@ -416,9 +390,7 @@ export default {
     line-height: 1.7rem;
   }
   .subtitle {
-    font-weight: 100;
     font-size: 1.8rem;
-    color: #526488;
     padding-bottom: 25px;
     max-width: 16rem;
   }
@@ -438,62 +410,15 @@ export default {
   }
 
   .section-title {
-    display: block;
-    font-weight: 100;
     font-size: 1.8rem;
   }
 
   .section-title-footnote {
-    display: block;
-    font-weight: 100;
     font-size: 1rem;
   }
 
   .tool-box-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
-    background: linear-gradient(to right, #ddbbff, #ffeeaa);
     padding: 0;
-  }
-
-  .tool-box-container-row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .tool-box-item {
-    padding: 1rem 0;
-    text-align: center;
-    width: 33.333333333333333333333%;
-  }
-
-  .tool-box-item > h1 {
-    font-size: 4rem;
-  }
-
-  .tool-box-item > h2 {
-    font-size: 1rem;
-    font-weight: 100;
-  }
-
-  .tool-box-item > h3 {
-    font-size: 0.8rem;
-    font-weight: 100;
-  }
-
-  .hide-on-mobile {
-    display: none;
   }
 }
 </style>

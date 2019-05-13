@@ -91,7 +91,7 @@ html {
 span.avoidwrap {
   display: inline-block;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .highlight {
     padding: 0 3px;
     border-radius: 5px;
