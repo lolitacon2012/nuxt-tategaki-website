@@ -56,8 +56,8 @@ export default {
 }
 
 .tool-box-item > .tool-box-item-icon {
-  width: 5rem;
-  height: 5rem;
+  width: 4.8rem;
+  height: 4.8rem;
 }
 
 .element-scaled {
@@ -72,8 +72,8 @@ export default {
     width: 33.333333333333333333333%;
   }
   .tool-box-item > .tool-box-item-icon {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 3.2rem;
+    height: 3.2rem;
   }
   .hide-on-mobile {
     display: none;
