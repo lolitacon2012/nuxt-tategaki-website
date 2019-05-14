@@ -1,7 +1,6 @@
 <template>
   <div>
     <section class="container container-pink-gradient container-full-height">
-      <Triangle />
       <h1 class="title title-rt">
         <transition name="fade" mode="out-in">
           <span :key="lang_reading">{{ lang_reading }}</span>
@@ -40,9 +39,8 @@
         </div>
         <div class="section-title-container flex-end ">
           <h1 class="section-title">
-            <span class="avoidwrap">Here are some</span>
-            <span class="avoidwrap">awesome tools</span>
-            <span class="avoidwrap">I'd love to use.</span>
+            <span class="avoidwrap">I use many</span>
+            <span class="avoidwrap">awesome tools.</span>
           </h1>
           <h1 class="section-title-footnote">
             <span class="avoidwrap">Play with </span>
@@ -54,7 +52,8 @@
                   href="https://www.coursera.org/account/accomplishments/specialization/certificate/QQEHCXPXJKUJ"
                   >Deep Learning</a
                 ></span
-              >also.</span
+              >
+              also.</span
             >
           </h1>
         </div>
@@ -70,7 +69,6 @@
 // import Logo from '~/components/Logo.vue'
 
 import HomepageSkill from '~/components/HomepageSkill'
-import Triangle from '~/components/Triangle'
 const RT_LANGUAGES = [
   'Kino Hasumi',
   'きのはすみ',
@@ -83,8 +81,7 @@ const rnd = (min, max) => {
 }
 export default {
   components: {
-    HomepageSkill,
-    Triangle
+    HomepageSkill
   },
   head() {
     return {
@@ -349,6 +346,8 @@ export default {
   box-decoration-break: clone;
   background: linear-gradient(to right, #ddbbff, #ffeeaa);
   padding: 6rem 0;
+  position: relative;
+  transition: transform 0.2s;
 }
 
 .tool-box-container-row {
