@@ -132,7 +132,7 @@ export default {
   },
   methods: {
     renderTriangle: (canvas = document.getElementById('canvas')) => {
-      if (!canvas) {
+      if (!canvas || window.innerWidth < 768) {
         return
       }
       const max = Math.max(window.innerWidth, window.innerHeight)
